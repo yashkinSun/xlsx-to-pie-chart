@@ -1,106 +1,111 @@
-# Анализатор несоответствий на производстве
+# Production Non-Conformance Analyzer
 
-Приложение для анализа данных о несоответствиях на производстве с визуализацией результатов в виде многоуровневой круговой диаграммы и таблиц.
+An application for analyzing production non-conformance data with visualization of results through multi-level pie charts and tables.
 
-## Описание
+## Description
 
-Приложение позволяет:
-- Загружать данные о несоответствиях из Excel-файлов
-- Анализировать данные по ролям и отделам (Производство и Офис)
-- Визуализировать результаты в виде многоуровневой круговой диаграммы
-- Отображать таблицу ролей, отсортированную по трудозатратам
-- Сравнивать данные с предыдущим месяцем
-- Создавать отчеты Excel с исходными данными, сводкой и диаграммой
+The application allows you to:
 
-## Требования
+- Load non-conformance data from Excel files
+- Analyze data by roles and departments (Production and Office)
+- Visualize results using multi-level pie charts
+- Display a role table sorted by labor costs
+- Compare data with the previous month
+- Generate Excel reports with source data, summary, and charts
 
-- Python 3.8 или выше
-- Библиотеки:
-  - tkinter (для GUI)
-  - pandas (для обработки данных)
-  - matplotlib (для визуализации)
-  - openpyxl (для работы с Excel)
+## Requirements
 
-## Установка
+- Python 3.8 or higher
+- Libraries:
+  - `tkinter` (for GUI)
+  - `pandas` (for data processing)
+  - `matplotlib` (for visualization)
+  - `openpyxl` (for Excel operations)
 
-1. Установите Python 3.8 или выше с официального сайта: https://www.python.org/downloads/
-2. Установите необходимые библиотеки:
+## Installation
 
-```bash
-pip install pandas matplotlib openpyxl
-```
+1. Install Python 3.8 or higher from the official website: https://www.python.org/downloads/
 
-Tkinter обычно поставляется вместе с Python для Windows. Если его нет, установите его:
+2. Install the required libraries:
+   ```bash
+   pip install pandas matplotlib openpyxl
+   ```
 
-```bash
-pip install tk
-```
+3. Tkinter is usually included with Python for Windows. If not available, install it:
+   ```bash
+   pip install tk
+   ```
 
-## Структура проекта
+## Project Structure
 
-- `main.py` - Точка входа в приложение
-- `app.py` - Основной класс приложения с GUI
-- `data_loader.py` - Модуль для загрузки данных из Excel
-- `data_analyzer.py` - Модуль для анализа данных
-- `data_visualizer.py` - Модуль для визуализации данных
-- `History/` - Папка для хранения истории загруженных файлов
+- `main.py` - Application entry point
+- `app.py` - Main application class with GUI
+- `data_loader.py` - Module for loading data from Excel
+- `data_analyzer.py` - Module for data analysis
+- `data_visualizer.py` - Module for data visualization
+- `History/` - Folder for storing uploaded file history
 
-## Запуск приложения
+## Running the Application
 
 ```bash
 python main.py
 ```
 
-## Использование
+## Usage
 
-1. Нажмите кнопку "Загрузить Excel файл" и выберите файл с данными о несоответствиях
-2. После загрузки файла будет отображена круговая диаграмма и таблица с результатами анализа
-3. Для сравнения с предыдущим месяцем установите флажок "Сравнить с предыдущим месяцем"
-4. Для создания отчета нажмите кнопку "Скачать отчет (.xlsx)"
+1. Click the "Load Excel File" button and select a file with non-conformance data
+2. After loading the file, a pie chart and table with analysis results will be displayed
+3. To compare with the previous month, check the "Compare with Previous Month" checkbox
+4. To generate a report, click the "Download Report (.xlsx)" button
 
-## Формат данных
+## Data Format
 
-Приложение ожидает Excel-файл со следующими столбцами:
-- "Виновник (Производство )" - роли производства
-- "Виновник (Офис )" - роли офиса
-- "Трудозатраты (рублей)" - трудозатраты в рублях
+The application expects an Excel file with the following columns:
 
-Роли могут быть разделены символом "/" (например, "Программист/Конструктор"). В этом случае трудозатраты будут разделены поровну между ролями.
+- `"Виновник (Производство )"` - production roles
+- `"Виновник (Офис )"` - office roles
+- `"Трудозатраты (рублей)"` - labor costs in rubles
 
-## Создание исполняемого файла (.exe)
+Roles can be separated by "/" (e.g., "Programmer/Designer"). In this case, labor costs will be divided equally between roles.
 
-Для создания исполняемого файла для Windows используйте PyInstaller:
+## Creating an Executable File (.exe)
 
-1. Установите PyInstaller:
+To create an executable file for Windows, use PyInstaller:
 
-```bash
-pip install pyinstaller
-```
+1. Install PyInstaller:
+   ```bash
+   pip install pyinstaller
+   ```
 
-2. Создайте исполняемый файл:
+2. Create the executable file:
+   ```bash
+   pyinstaller --onefile --windowed main.py
+   ```
 
-```bash
-pyinstaller --onefile --windowed main.py
-```
+3. The executable file will be created in the `dist/` folder
 
-3. Исполняемый файл будет создан в папке `dist/`
+Alternatively, you can use Visual Studio 2022 to create an executable file:
 
-Альтернативно, вы можете использовать Visual Studio 2022 для создания исполняемого файла:
+1. Install Visual Studio 2022 with Python support
+2. Open the project in Visual Studio
+3. Select "Project" -> "Publish" menu and follow the wizard instructions
 
-1. Установите Visual Studio 2022 с поддержкой Python
-2. Откройте проект в Visual Studio
-3. Выберите меню "Проект" -> "Опубликовать" и следуйте инструкциям мастера
+## Testing
 
-## Тестирование
-
-Для проверки работоспособности приложения запустите тестовый скрипт:
+To verify the application's functionality, run the test script:
 
 ```bash
 python test_app.py
 ```
 
-## Примечания
+## Notes
 
-- Все загруженные файлы автоматически сохраняются в папку "History" с временной меткой
-- При сравнении с предыдущим месяцем используется самый последний файл из папки "History"
-- Отчет Excel содержит три листа: исходные данные, сводку и диаграмму
+- All uploaded files are automatically saved to the "History" folder with a timestamp
+- When comparing with the previous month, the most recent file from the "History" folder is used
+- The Excel report contains three sheets: source data, summary, and chart
+
+---
+
+**Beta Version Notice**: This application is currently in beta. Some features may be limited or subject to change.
+
+**NOTE** Application main language is Russian. 
